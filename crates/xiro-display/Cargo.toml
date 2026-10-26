@@ -1,0 +1,20 @@
+[package]
+name = "xiro-display"
+description = "Sidecar-like virtual monitor control for Xiro: Windows display topology (CCD), modes, scaling and the Virtual Display Driver."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies.windows]
+workspace = true
+features = [
+    "Win32_Foundation",
+    "Win32_Devices_DeviceAndDriverInstallation",
+    "Win32_Devices_Display",
+    "Win32_Graphics_Gdi",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Registry",
+]

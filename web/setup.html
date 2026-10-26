@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07080C" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F5F6F8" media="(prefers-color-scheme: light)">
+  <title>Xiro · Set up</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/ui.css">
+</head>
+<body class="setup">
+  <main class="sheet-wrap">
+    <div id="link" class="link" data-state="searching" aria-hidden="true">
+      <span class="dev pc"></span><span class="seam"><i></i></span><span class="dev pad"></span>
+    </div>
+
+    <section id="checking" class="stage">
+      <p class="eyebrow">Xiro</p>
+      <h1>Looking for your PC</h1>
+      <p class="lede">Checking for a secure connection.</p>
+    </section>
+
+    <section id="steps" class="stage" hidden>
+      <p class="eyebrow">One-time setup</p>
+      <h1>Let this <span data-device>iPad</span> trust your PC</h1>
+      <p class="lede">Safari decodes video in hardware only over a secure connection. Three steps, once, and the picture is instant.</p>
+
+      <ol class="steps">
+        <li class="step" id="step-profile">
+          <span class="step-num" aria-hidden="true"></span>
+          <div class="step-body">
+            <h2>Download the profile</h2>
+            <p>Tap <b>Allow</b>, then <b>Close</b>.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true"></span>
+          <div class="step-body">
+            <h2>Install it</h2>
+            <p class="path"><span>Settings</span><span>General</span><span>VPN &amp; Device Management</span><span>Xiro Local CA</span></p>
+            <p>Tap <b>Install</b>. Its fingerprint matches the one in Xiro on your PC.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true"></span>
+          <div class="step-body">
+            <h2>Trust it</h2>
+            <p class="path"><span>Settings</span><span>General</span><span>About</span><span>Certificate Trust Settings</span></p>
+            <p>Turn on <b>Xiro Local CA</b>, then come back here.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="actions">
+        <a class="button primary" id="download" href="/xiro-ca.crt">Download profile</a>
+        <button id="retry" class="button quiet">Check again</button>
+      </div>
+      <p class="waiting" role="status"><span class="pulse" aria-hidden="true"></span><span id="error">Waiting for trust. This page continues by itself.</span></p>
+      <p class="fine">The certificate is made on your PC and never leaves your network.</p>
+    </section>
+
+    <section id="ready" class="stage" hidden>
+      <p class="eyebrow">Secure</p>
+      <h1>You’re connected</h1>
+      <p class="lede">Opening Xiro…</p>
+    </section>
+
+    <section id="missing" class="stage" hidden>
+      <p class="eyebrow">No pairing code</p>
+      <h1>Scan the code on your PC</h1>
+      <p class="lede">Click the Xiro icon in your PC’s taskbar, then point the Camera at the code it shows.</p>
+    </section>
+  </main>
+  <script src="/setup.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "Xiro",
+  "short_name": "Xiro",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#07080C",
+  "theme_color": "#07080C",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

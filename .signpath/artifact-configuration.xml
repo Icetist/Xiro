@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paste into SignPath: Project "xiro" → Artifact Configurations → default.
+     The release workflow uploads Xiro.exe as a GitHub artifact (a zip) and passes the
+     version from Cargo.toml, so only a Xiro.exe that says it is Xiro of that version is signed. -->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <parameters>
+    <parameter name="version" required="true" />
+  </parameters>
+  <zip-file>
+    <pe-file path="Xiro.exe" product-name="Xiro" product-version="${version}">
+      <authenticode-sign />
+    </pe-file>
+  </zip-file>
+</artifact-configuration>

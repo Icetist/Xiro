@@ -1,0 +1,4 @@
+# windows-gnu without MSYS2: link with Rust's bundled LLVM linker (see README.md).
+[target.x86_64-pc-windows-gnu]
+linker = "rust-lld"
+rustflags = ["-C", "linker-flavor=ld.lld", "-C", "link-self-contained=yes"]

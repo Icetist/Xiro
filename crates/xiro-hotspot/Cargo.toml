@@ -1,0 +1,18 @@
+[package]
+name = "xiro-hotspot"
+description = "Xiro Wi-Fi: the PC hosts a private Wi-Fi network for the iPad (Wi-Fi Direct legacy access point)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+getrandom = "0.4.3"
+
+[dependencies.windows]
+workspace = true
+features = [
+    "Devices_WiFiDirect",
+    "Foundation",
+    "Security_Credentials",
+]

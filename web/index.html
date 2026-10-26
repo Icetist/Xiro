@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Xiro">
+  <meta name="theme-color" content="#07080C">
+  <title>Xiro</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/ui.css">
+</head>
+<body class="app">
+  <canvas id="screen" width="16" height="9"></canvas>
+  <textarea id="kbd" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Keyboard input"></textarea>
+
+  <div id="status" class="status" role="status">
+    <div class="status-card">
+      <div id="status-link" class="link" data-state="searching" aria-hidden="true">
+        <span class="dev pc"></span><span class="seam"><i></i></span><span class="dev pad"></span>
+      </div>
+      <p id="status-text" class="status-title">Connecting</p>
+      <p id="status-detail" class="status-detail"></p>
+    </div>
+  </div>
+
+  <div id="stats" class="stats" hidden></div>
+  <div id="tip" class="tip" role="status" hidden></div>
+
+  <button id="handle" class="handle" aria-label="Open menu" aria-expanded="false"></button>
+  <div id="menu" class="menu" hidden>
+    <div class="menu-row">
+      <button class="tile" data-action="fullscreen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+        <span>Full screen</span>
+      </button>
+      <button class="tile" data-action="keyboard">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>
+        <span>Keyboard</span>
+      </button>
+      <button class="tile" data-action="stats">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg>
+        <span>Stats</span>
+      </button>
+    </div>
+
+    <div class="menu-group">
+      <span class="label">Touch</span>
+      <div class="seg" data-setting="mode">
+        <button data-value="touch">Touch screen</button>
+        <button data-value="mouse">Trackpad</button>
+      </div>
+    </div>
+    <div class="menu-group">
+      <span class="label">Frame rate</span>
+      <div class="seg" data-setting="fps">
+        <button data-value="30">30</button><button data-value="60">60</button><button data-value="90">90</button><button data-value="120">120</button>
+      </div>
+    </div>
+    <div class="menu-group">
+      <span class="label">Quality · Mbit/s</span>
+      <div class="seg" data-setting="bitrateMbps">
+        <button data-value="10">10</button><button data-value="20">20</button><button data-value="40">40</button><button data-value="80">80</button>
+      </div>
+    </div>
+
+    <p id="menu-info" class="menu-info"></p>
+    <p id="menu-hint" class="hint" hidden></p>
+
+    <details class="help">
+      <summary><span>Remove Xiro from this <span data-device>iPad</span></span></summary>
+      <ol>
+        <li>Touch and hold the Xiro icon on the Home Screen, then tap <b>Remove App</b>.</li>
+        <li><b>Settings</b> › <b>General</b> › <b>VPN &amp; Device Management</b> › <b>Xiro Local CA</b> › <b>Remove Profile</b>.</li>
+      </ol>
+      <p>To remove Xiro from the PC too, open Xiro there and choose <b>Uninstall</b>.</p>
+    </details>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

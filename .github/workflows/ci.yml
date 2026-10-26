@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch the display driver package (pinned, checksum verified)
+        run: powershell -File scripts/fetch-driver.ps1
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: llvm-tools-preview
+
+      - uses: taiki-e/install-action@cargo-llvm-cov
+
+      - name: Build
+        run: cargo build --release --workspace
+
+      - name: Test with coverage
+        run: cargo llvm-cov --workspace --summary-only --fail-under-lines 60
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Client tests
+        run: npm test
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Xiro
+          path: target/release/xiro.exe

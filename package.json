@@ -1,0 +1,10 @@
+{
+  "name": "xiro-web",
+  "private": true,
+  "description": "Tests for Xiro's Safari client (web/). The app itself is Rust: see README.md.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --experimental-test-coverage --test-coverage-include=web/protocol.js \"test/**/*.test.js\""
+  },
+  "license": "MIT"
+}
