@@ -150,9 +150,10 @@ mod tests {
 
     #[test]
     fn a_users_own_folder_is_not_trusted() {
-        // Created by this test, which runs unelevated: owned by the user, not Administrators.
+        // Elevated (as on CI), new folders are owned by Administrators, so this only holds unelevated.
+        let elevated = std::process::Command::new("net").arg("session").output().is_ok_and(|o| o.status.success());
         let dir = temp("owner");
-        assert!(!owned_by_admins(&dir));
+        assert_eq!(owned_by_admins(&dir), elevated);
         fs::remove_dir_all(&dir).unwrap();
     }
 }
