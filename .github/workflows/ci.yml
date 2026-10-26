@@ -23,7 +23,13 @@ jobs:
         run: cargo build --release --workspace
 
       - name: Test with coverage
-        run: cargo llvm-cov --workspace --summary-only --fail-under-lines 60
+        shell: pwsh
+        run: |
+          cargo llvm-cov --workspace --no-fail-fast --summary-only --fail-under-lines 60 2>&1 | Tee-Object -FilePath test.log
+          $code = $LASTEXITCODE
+          # Failures as annotations, readable without signing in.
+          if ($code -ne 0) { Select-String -Path test.log -Pattern 'panicked at|^error|FAILED|assertion' | Select-Object -First 30 | ForEach-Object { "::error::$($_.Line)" } }
+          exit $code
 
       - uses: actions/setup-node@v4
         with:
